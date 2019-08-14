@@ -113,46 +113,49 @@ const data = [
 
 */
 
-function componentCreator(data) {
+const articles = document.querySelector('.articles');
+
+function articleCreator(data) {
   const div = document.createElement("div");
-  
-    div.classList.add('article', 'article-open');
-
   const h2 = document.createElement("h2");
-
-    h2.textContent = `${data.title}`;
-
   const p = document.createElement("p");
-
-    p.classList.add('date');
-    p.textContent = `${data.date}`;
-
-  const articleP1 = document.createElement("p");
-
-    p.textContent = `${data.firstParagraph}`;
-
-  const articleP2 = document.createElement("p");
-
-    p.textContent = `${data.secondParagraph}`;
-
-  const articleP3 = document.createElement("p");
-
-    p.textContent = `${data.thirdParagraph}`;
-
+  const p1 = document.createElement("p");
+  const p2 = document.createElement("p");
+  const p3 = document.createElement("p");
   const span = document.createElement("span");
 
+    //div
+    div.classList.add("article");
+
+    //h2
+    h2.textContent = data.title;
+
+    //p
+    p.classList.add("date");
+    p.textContent = data.date;
+
+    //p1
+    p1.textContent = data.firstParagraph;
+
+    //p2
+    p2.textContent = data.secondParagraph;
+
+    //p3
+    p3.textContent = data.thirdParagraph;
+
+    //span
     span.classList.add("expandButton");
+    span.textContent = "Expand";
+
+    //eventListener
     span.addEventListener('click',(e) => {
-      span.classList.toggle("article-open")
+      span.classList.toggle("article-open");
     });
-    return div;
+
+    //append
+    articleCreator.articles.appendChild(div);
+    articleCreator.div.appendChild(h2);
+
+    return articleCreator;
 }
 
-let newComponents = data.map((dataItem) => {
-  let newComponent = componentCreator(dataItem);
-  return newComponent;
-});
-
-newComponents.forEach(component => {
-  h2.appendChild(component);
-});
