@@ -113,31 +113,31 @@ const data = [
 
 */
 
-function componentCreator({data}) {
+function componentCreator(data) {
   const div = document.createElement("div");
   
     div.classList.add('article', 'article-open');
 
   const h2 = document.createElement("h2");
 
-    h2.textContent = [data.title];
+    h2.textContent = `${data.title}`;
 
   const p = document.createElement("p");
 
     p.classList.add('date');
-    p.textContent = [data.date]
+    p.textContent = `${data.date}`;
 
   const articleP1 = document.createElement("p");
 
-    p.textContent = [data.firstParagraph];
+    p.textContent = `${data.firstParagraph}`;
 
   const articleP2 = document.createElement("p");
 
-    p.textContent = [data.secondParagraph];
+    p.textContent = `${data.secondParagraph}`;
 
   const articleP3 = document.createElement("p");
 
-    p.textContent = [data.thirdParagraph];
+    p.textContent = `${data.thirdParagraph}`;
 
   const span = document.createElement("span");
 
@@ -147,3 +147,12 @@ function componentCreator({data}) {
     });
     return div;
 }
+
+let newComponents = data.map((dataItem) => {
+  let newComponent = componentCreator(dataItem);
+  return newComponent;
+});
+
+newComponents.forEach(component => {
+  h2.appendChild(component);
+});
